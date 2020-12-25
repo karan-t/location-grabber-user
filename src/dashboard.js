@@ -3,6 +3,7 @@ import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import firebase from './Firebase'
 
+const api_key = process.env.REACT_APP_API_KEY;
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +48,7 @@ export default class Dashboard extends Component {
 
   getuserAddress() {
     fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=AIzaSyCPKuNEhhwscvcoX5dSki2XPBo2lM2Lz8M`
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=${api_key}`
     )
       .then((response) => response.json())
       .then((data) =>
@@ -88,7 +89,7 @@ export default class Dashboard extends Component {
         <p>Address: {this.state.userAddress}</p>
         {this.state.latitude && this.state.longitude ? (
           <img
-            src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.latitude},${this.state.longitude}&zoom=14&size=400x300&sensor=false&markers=color:red%7C${this.state.latitude},${this.state.longitude}&key=AIzaSyCPKuNEhhwscvcoX5dSki2XPBo2lM2Lz8M`}
+            src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.latitude},${this.state.longitude}&zoom=14&size=400x300&sensor=false&markers=color:red%7C${this.state.latitude},${this.state.longitude}&key=${api_key}`}
             alt=""
           />
         ) : null}
