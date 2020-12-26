@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button } from "@material-ui/core";
+import { Button , Card } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import firebase from './Firebase'
+import firebase from '../Firebase'
 
 const api_key = process.env.REACT_APP_API_KEY;
 export default class Dashboard extends Component {
@@ -35,7 +35,6 @@ export default class Dashboard extends Component {
       longitude: position.coords.longitude,
     });
     this.writeUserData(userName, position.coords.latitude, position.coords.longitude)
-    console.log("Firebase call")
     this.getuserAddress();
   }
 
@@ -79,24 +78,32 @@ export default class Dashboard extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <h2>React Location Grabber</h2>
+      <div className="main_dashboard_container">
+        <div className="top_bar">
+        <h2><u>React Location Grabber</u></h2>
+        <p>Signed in as : {localStorage.getItem("Name")}</p>
+        </div>
+        <div className="content">
+          <Card className="content_card">
+            <p>Press the get coordinates to get your Latitude, Longitude and Address</p>
         <Button variant="contained" color="primary" onClick={this.getLocation}>Get Coordinates</Button>
-        <h4>HTML5 Coordinates</h4>
         <p>Latitude: {this.state.latitude}</p>
         <p>Longitude: {this.state.longitude}</p>
-        <h4>Google Maps Reverse Geocoding</h4>
+        <h4>Reverse Geocoding with Google Maps API</h4>
         <p>Address: {this.state.userAddress}</p>
+        <br />
         {this.state.latitude && this.state.longitude ? (
           <img
             src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.latitude},${this.state.longitude}&zoom=14&size=400x300&sensor=false&markers=color:red%7C${this.state.latitude},${this.state.longitude}&key=${api_key}`}
             alt=""
           />
         ) : null}
-        <br />
+         <br />
             <Button variant="contained" color="secondary" component={Link} to={"/logout"} className="logout_menulink">
                Logout
             </Button>
+            </Card>
+            </div>
       </div>
     );
   }

@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+}
+
+.login_form {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../Images/test.jpg");
+  color: white;
+}
+
+.login_card {
+  padding: 20px;
+}
+
+.MuiPaper-rounded {
+  border-radius: 15px !important;
+}
+
+#outlined-required {
+  width: 400px;
+}
+
+.login_button {
+  float: right;
+  height: 45px;
+}
+
+.main_dashboard_container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../Images/test.jpg");
+  color: white;
+}
+
+.top_bar {
+  height: 8%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.content {
+  height: 92%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content_card{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
